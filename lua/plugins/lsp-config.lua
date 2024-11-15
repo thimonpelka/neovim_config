@@ -48,6 +48,9 @@ return {
 			lspconfig.solargraph.setup({
 				capabilities = capabilities,
 			})
+			lspconfig.cssls.setup({
+				capabilities = capabilities,
+			})
 			lspconfig.html.setup({
 				capabilities = capabilities,
 			})
