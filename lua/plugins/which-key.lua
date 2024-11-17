@@ -9,6 +9,7 @@ return {
 			{ "<leader>c", group = "Code Actions" },
 			{ "<leader>s", group = "Code Connections" },
 			{ "<leader>g", group = "Git" },
+			{ "<leader>t", group = "TODOs" },
 		})
 	end,
 }
