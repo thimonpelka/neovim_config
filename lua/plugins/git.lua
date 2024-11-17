@@ -8,6 +8,9 @@ return {
 			vim.keymap.set({ "n" }, "<leader>gc", ":Git commit -a -m", {
 				desc = "Git commit"
 			})
+			vim.keymap.set({ "n" }, "<leader>gP", ":Git pull<CR>", {
+				desc = "Git pull"
+			})
 			vim.keymap.set({ "n" }, "<leader>gp", ":Git push<CR>", {
 				desc = "Git push"
 			})
