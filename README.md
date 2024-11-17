@@ -21,7 +21,7 @@ Commands
 - gf - das selbe mit files
 - 12G go to line 12
 - f + buchstabe - zu buchstabe springen
-- fg - open fuzzy find and search for words inside project
+- space + f - open fuzzy find and search for words inside project
 
 - Ctrl + w + s - split
 - Ctrl + w + v - vertical split
