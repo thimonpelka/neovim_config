@@ -14,6 +14,9 @@ return {
 			vim.keymap.set({ "n" }, "<leader>gp", ":Git push<CR>", {
 				desc = "Git push"
 			})
+			vim.keymap.set({ "n" }, "<leader>gs", ":Git status<CR>", {
+				desc = "Git status"
+			})
 		end,
 	},
 	{
