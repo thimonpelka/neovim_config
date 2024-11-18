@@ -17,8 +17,16 @@ return {
 				require("todo-comments").jump_prev()
 			end, { desc = "Previous todo comment" })
 
-			vim.keymap.set("n", "<leader>tt", ":TodoTelescope<CR>", {
-				desc = "Open Todo List"
+			vim.keymap.set("n", "<leader>ta", ":TodoTelescope<CR>", {
+				desc = "Open Todo List All"
+			})
+
+			vim.keymap.set("n", "<leader>tl", ":TodoTelescope keywords=TODO,FIX<CR>", {
+				desc = "Open Todo List (Only TODO & FIX)"
+			})
+
+			vim.keymap.set("n", "<leader>tq", ":TodoQuickFix<CR>", {
+				desc = "Open Quick Fix"
 			})
 		end,
 	},
