@@ -45,6 +45,9 @@ return {
 			-- SOLARGRAPH
 			-- ]]
 
+			lspconfig.gopls.setup({
+				capabilities = capabilities,
+			})
 			lspconfig.solargraph.setup({
 				capabilities = capabilities,
 			})
@@ -55,6 +58,9 @@ return {
 				capabilities = capabilities,
 			})
 			lspconfig.lua_ls.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.pylsp.setup({
 				capabilities = capabilities,
 			})
 
