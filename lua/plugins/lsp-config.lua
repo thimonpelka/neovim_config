@@ -90,14 +90,22 @@ return {
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "<leader>sd", vim.lsp.buf.definition, {
-				desc = "Show Definition"
+				desc = "Show Definition",
 			})
 			vim.keymap.set("n", "<leader>sr", vim.lsp.buf.references, {
-				desc = "Show Reference"
+				desc = "Show Reference",
 			})
-			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {
-				desc = "Show code action"
-			})
+			-- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {
+			-- 	desc = "Show code action",
+			-- })
+		end,
+	},
+	{
+		"ray-x/lsp_signature.nvim",
+		event = "VeryLazy",
+		opts = {},
+		config = function(_, opts)
+			require("lsp_signature").setup(opts)
 		end,
 	},
 }
