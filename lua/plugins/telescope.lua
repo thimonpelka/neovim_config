@@ -16,8 +16,8 @@ return {
 				},
 			})
 			local builtin = require("telescope.builtin")
-			vim.keymap.set("n", "<leader>p", builtin.find_files, {
-				desc = "Find File",
+			vim.keymap.set("n", "<leader>o", builtin.find_files, {
+				desc = "Open File",
 				silent = true,
 			})
 			vim.keymap.set("n", "<leader>f", builtin.live_grep, {

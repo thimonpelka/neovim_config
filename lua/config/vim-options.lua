@@ -22,6 +22,9 @@ vim.keymap.set({ "v", "n", "i" }, "<C-i>", "<Esc>[{", {})
 -- vim.keymap.set({ "v", "n", "i" }, "<C-m>", "<Esc>]}", {})
 
 
+vim.keymap.set("n", "<leader>C", ":e $MYVIMRC<CR>", {
+	desc = "Open NVIM Config"
+})
 -- quickfix menu navigation:
 -- vim.keymap.set("n", "<leader>lj", ":cnext<CR>", { desc="Forward qfixlist"})
 -- vim.keymap.set("n", "<leader>lk", ":cprev<CR>", { desc="Backward qfixlist"})

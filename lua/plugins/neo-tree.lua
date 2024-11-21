@@ -9,8 +9,8 @@ return {
 	},
 	config = function()
 		-- Neo-Tree
-		vim.keymap.set("n", "<leader>a", ":Neotree filesystem reveal left<CR>", {
-			desc = "Open Filesystem"
+		vim.keymap.set("n", "<leader>e", ":Neotree filesystem reveal left<CR>", {
+			desc = "Open Fileexplorer"
 		})
 	end,
 }
