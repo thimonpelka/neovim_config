@@ -1,5 +1,6 @@
 return {
 	"nvimdev/dashboard-nvim",
+	dependencies = { "nvim-telescope/telescope.nvim" },
 	event = "VimEnter",
 	config = function()
 		require("dashboard").setup({
@@ -17,7 +18,10 @@ return {
 					{ desc = "📝 New File", action = ":ene <BAR> startinsert <CR>", key = "n" },
 					{ desc = "⚙️ Config", action = ":e $MYVIMRC", key = "c" },
 				},
-				footer = { "Have a productive day!" }, -- Footer message
+				mru = {
+					enable = false,
+				},
+				footer = { "" }, -- Footer message
 			},
 		})
 	end,
