@@ -105,8 +105,15 @@ return {
 	},
 	{
 		"ray-x/lsp_signature.nvim",
-		event = "VeryLazy",
-		opts = {},
+		event = "InsertEnter",
+		opts = {
+			bind = true,
+			handler_opts = {
+				border = "rounded",
+			},
+			hint_prefix = "",
+			transparency = 10,
+		},
 		config = function(_, opts)
 			require("lsp_signature").setup(opts)
 		end,
