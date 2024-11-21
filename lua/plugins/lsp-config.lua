@@ -98,6 +98,9 @@ return {
 			-- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {
 			-- 	desc = "Show code action",
 			-- })
+			vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, {
+				desc = "Rename Variable Globally",
+			})
 		end,
 	},
 	{

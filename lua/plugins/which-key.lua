@@ -7,7 +7,7 @@ return {
 
 		wk.add({
 			{ "<leader>c", group = "Code Actions" },
-			{ "<leader>s", group = "Code Connections" },
+			{ "<leader>s", group = "Show" },
 			{ "<leader>g", group = "Git" },
 			{ "<leader>t", group = "TODOs" },
 		})
