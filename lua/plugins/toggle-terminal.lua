@@ -1,6 +1,26 @@
-vim.keymap.set("n", "<leader>t", ":ToggleTerm<CR>", {
+vim.keymap.set("n", "<leader>tt", ":ToggleTerm<CR>", {
 	desc = "Open Terminal",
 })
+
+vim.keymap.set("n", "<leader>tf", ":ToggleTerm direction=float<CR>", {
+	desc = "Open Terminal",
+})
+
+vim.keymap.set("t", "<C-w>w", "<cmd>ToggleTerm<CR>", {
+	desc = "Terminal to Background",
+	noremap = true,
+	silent = true,
+})
+
+vim.keymap.set("t", "<C-w>c", function()
+	local term_buf = vim.api.nvim_get_current_buf()
+	vim.api.nvim_buf_delete(term_buf, { force = true })
+end, {
+	desc = "Close Terminal",
+	noremap = true,
+	silent = true,
+})
+
 vim.opt.termguicolors = true
 
 return {

@@ -77,3 +77,5 @@ Git:
 - space + g + a - git add .
 - space + g + c - git commit
 - space + g + p - git push
+
+After "go to definition" use Ctrl+t to go back to where you called it
