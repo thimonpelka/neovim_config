@@ -9,23 +9,23 @@ return {
 		},
 		config = function()
 			require("todo-comments").setup()
-			vim.keymap.set("n", "<leader>tn", function()
+			vim.keymap.set("n", "<leader>kn", function()
 				require("todo-comments").jump_next()
 			end, { desc = "Next todo comment" })
 
-			vim.keymap.set("n", "<leader>tp", function()
+			vim.keymap.set("n", "<leader>kp", function()
 				require("todo-comments").jump_prev()
 			end, { desc = "Previous todo comment" })
 
-			vim.keymap.set("n", "<leader>ta", ":TodoTelescope<CR>", {
+			vim.keymap.set("n", "<leader>ka", ":TodoTelescope<CR>", {
 				desc = "Open Todo List All"
 			})
 
-			vim.keymap.set("n", "<leader>tl", ":TodoTelescope keywords=TODO,FIX<CR>", {
+			vim.keymap.set("n", "<leader>kl", ":TodoTelescope keywords=TODO,FIX<CR>", {
 				desc = "Open Todo List (Only TODO & FIX)"
 			})
 
-			vim.keymap.set("n", "<leader>tq", ":TodoQuickFix<CR>", {
+			vim.keymap.set("n", "<leader>kq", ":TodoQuickFix<CR>", {
 				desc = "Open Quick Fix"
 			})
 		end,
