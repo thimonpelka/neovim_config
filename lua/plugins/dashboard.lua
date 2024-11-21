@@ -1,6 +1,9 @@
 return {
 	"nvimdev/dashboard-nvim",
-	dependencies = { "nvim-telescope/telescope.nvim" },
+	dependencies = {
+		{ "nvim-telescope/telescope.nvim" },
+		{ "nvim-tree/nvim-web-devicons" },
+	},
 	event = "VimEnter",
 	config = function()
 		require("dashboard").setup({
@@ -25,5 +28,4 @@ return {
 			},
 		})
 	end,
-	dependencies = { { "nvim-tree/nvim-web-devicons" } },
 }
