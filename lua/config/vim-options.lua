@@ -3,14 +3,20 @@ vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
 vim.cmd("set clipboard=unnamedplus")
 vim.cmd("set number relativenumber")
+-- vim.cmd("set autochdir")
 vim.g.mapleader = " "
 
-vim.keymap.set({ "v", "n", "i" }, "<C-s>", "<Esc>:w<CR>", {})
+vim.keymap.set({ "v", "n", "i" }, "<C-s>", "<Esc>:wa<CR>", {})
 vim.keymap.set({ "v", "n", "i" }, "<C-a>", "<Esc>:wqa<CR>", {})
 vim.keymap.set({ "v", "n", "i" }, "<C-d>", "<Esc>Vyp", {})
 
 vim.keymap.set('n', "<leader>l", ":Lazy<CR>", {
 	desc = "Open Lazy"
+})
+
+
+vim.keymap.set('n', "<leader>cd", ":cd %:p:h<CR>", {
+	desc = "Change working directory to current File"
 })
 
 -- vim.keymap.set({ "v", "n", "i" }, "<C-l>", "<Esc>:wincmd l<CR>", {})
