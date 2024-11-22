@@ -45,7 +45,7 @@ return {
 			-- Your existing toggleterm setup options
 			open_mapping = [[<c-\>]],
 			-- direction = "float", -- or "horizontal", "vertical", etc.
-			shell = "pwsh",
+			shell = vim.loop.os_uname().sysname == "Windows_NT" and "pwsh" or vim.o.shell,
 			on_open = function(term)
 				vim.api.nvim_buf_set_keymap(
 					term.bufnr,
