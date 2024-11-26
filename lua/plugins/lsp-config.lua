@@ -9,6 +9,9 @@ return {
 	{
 		"williamboman/mason-lspconfig.nvim",
 		lazy = false,
+		opts = {
+			auto_install = true,
+		},
 		config = function()
 			require("mason-lspconfig").setup({
 				auto_install = true,
@@ -37,32 +40,40 @@ return {
 			-- ]]
 
 			local lspconfig = require("lspconfig")
-			lspconfig.ts_ls.setup({
-				capabilities = capabilities,
-			})
 
-			-- [[
-			-- SOLARGRAPH
-			-- ]]
-
-			lspconfig.gopls.setup({
-				capabilities = capabilities,
+			require("mason-lspconfig").setup_handlers({
+				function(server)
+					lspconfig[server].setup({
+						capabilities = capabilities
+					})
+				end,
 			})
-			lspconfig.solargraph.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.cssls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.html.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.lua_ls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.pylsp.setup({
-				capabilities = capabilities,
-			})
+			-- lspconfig.ts_ls.setup({
+			-- 	capabilities = capabilities,
+			-- })
+			--
+			-- -- [[
+			-- -- SOLARGRAPH
+			-- -- ]]
+			--
+			-- lspconfig.gopls.setup({
+			-- 	capabilities = capabilities,
+			-- })
+			-- lspconfig.solargraph.setup({
+			-- 	capabilities = capabilities,
+			-- })
+			-- lspconfig.cssls.setup({
+			-- 	capabilities = capabilities,
+			-- })
+			-- lspconfig.html.setup({
+			-- 	capabilities = capabilities,
+			-- })
+			-- lspconfig.lua_ls.setup({
+			-- 	capabilities = capabilities,
+			-- })
+			-- lspconfig.pylsp.setup({
+			-- 	capabilities = capabilities,
+			-- })
 
 			local angularls_path = mason_registry.get_package("angular-language-server"):get_install_path()
 			local cmd = {

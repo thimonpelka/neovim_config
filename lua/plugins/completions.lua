@@ -1,6 +1,15 @@
+vim.keymap.set("i", "<C-l>", 'copilot#Accept("\\<CR>")', {
+	expr = true,
+	replace_keycodes = false,
+})
+vim.g.copilot_no_tab_map = true
+
 return {
 	{
 		"hrsh7th/cmp-nvim-lsp",
+	},
+	{
+		"github/copilot.vim",
 	},
 	{
 		"L3MON4D3/LuaSnip",
@@ -70,7 +79,7 @@ return {
 				}),
 				experimental = {
 					ghost_text = true,
-				}
+				},
 			})
 		end,
 	},
