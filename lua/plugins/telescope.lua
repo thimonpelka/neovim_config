@@ -1,7 +1,7 @@
 return {
-	{
-		"nvim-telescope/telescope-ui-select.nvim",
-	},
+	-- {
+	-- 	"nvim-telescope/telescope-ui-select.nvim",
+	-- },
 	{
 		"nvim-telescope/telescope.nvim",
 		priority = 1000,
@@ -9,11 +9,11 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
 			require("telescope").setup({
-				extensions = {
-					["ui-select"] = {
-						require("telescope.themes").get_dropdown({}),
-					},
-				},
+				-- extensions = {
+				-- 	["ui-select"] = {
+				-- 		require("telescope.themes").get_dropdown({}),
+				-- 	},
+				-- },
 			})
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<leader>o", builtin.find_files, {
@@ -29,7 +29,7 @@ return {
 				silent = true,
 			})
 
-			require("telescope").load_extension("ui-select")
+			-- require("telescope").load_extension("ui-select")
 		end,
 	},
 }

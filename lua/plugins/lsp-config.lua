@@ -1,3 +1,13 @@
+-- Diangostics keybinds
+vim.keymap.set("n", "<leader>cn", vim.diagnostic.goto_next, {
+	desc = "Go to next Diagnostics",
+})
+
+vim.keymap.set("n", "<leader>cp", vim.diagnostic.goto_prev, {
+	desc = "Go to prev Diagnostics",
+})
+
+
 return {
 	{
 		"williamboman/mason.nvim",
@@ -12,17 +22,17 @@ return {
 		opts = {
 			auto_install = true,
 		},
-		config = function()
-			require("mason-lspconfig").setup({
-				auto_install = true,
-			})
-
-			local ok, mason_registry = pcall(require, "mason-registry")
-			if not ok then
-				vim.notify("mason-registry could not be loaded")
-				return
-			end
-		end,
+		-- config = function()
+		-- 	require("mason-lspconfig").setup({
+		-- 		auto_install = true,
+		-- 	})
+		--
+		-- 	local ok, mason_registry = pcall(require, "mason-registry")
+		-- 	if not ok then
+		-- 		vim.notify("mason-registry could not be loaded")
+		-- 		return
+		-- 	end
+		-- end,
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -44,7 +54,7 @@ return {
 			require("mason-lspconfig").setup_handlers({
 				function(server)
 					lspconfig[server].setup({
-						capabilities = capabilities
+						capabilities = capabilities,
 					})
 				end,
 			})

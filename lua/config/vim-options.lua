@@ -3,12 +3,22 @@ vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
 vim.cmd("set clipboard=unnamedplus")
 vim.cmd("set number relativenumber")
+-- vim.cmd("set cursorline=true")
 -- vim.cmd("set autochdir")
 vim.g.mapleader = " "
+vim.opt.cursorline = true
+vim.opt.scrolloff = 10
+vim.opt.sidescrolloff = 15
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.swapfile = false
 
 vim.keymap.set({ "v", "n", "i" }, "<C-s>", "<Esc>:wa<CR>", {})
 vim.keymap.set({ "v", "n", "i" }, "<C-a>", "<Esc>:wqa<CR>", {})
-vim.keymap.set({ "v", "n", "i" }, "<C-d>", "<Esc>Vyp", {})
+-- vim.keymap.set({ "v", "n", "i" }, "<C-d>", "<Esc>Vyp", {})
+vim.keymap.set({ "v", "n", "i" }, "<leader>d", "<Esc>Vyp", {
+	desc = "Duplicate Line"
+})
 
 vim.keymap.set('n', "<leader>l", ":Lazy<CR>", {
 	desc = "Open Lazy"

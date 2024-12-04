@@ -1,5 +1,7 @@
-vim.keymap.set("i", "<C-l>", 'copilot#Accept("\\<CR>")', {
+vim.keymap.set("i", "<C-Z>", 'copilot#Accept("<CR>")', {
+	noremap = true,
 	expr = true,
+	-- silent = true,
 	replace_keycodes = false,
 })
 vim.g.copilot_no_tab_map = true
@@ -11,6 +13,20 @@ return {
 	{
 		"github/copilot.vim",
 	},
+	-- {
+	-- 	"zbirenbaum/copilot.lua",
+	-- 	cmd = "Copilot",
+	-- 	event = "InsertEnter",
+	-- 	config = function()
+	-- 		require("copilot").setup({
+	-- 			suggestion = {
+	-- 				keymap = {
+	-- 					accept = "<C-Z>",
+	-- 				}
+	-- 			}
+	-- 		})
+	-- 	end,
+	-- },
 	{
 		"L3MON4D3/LuaSnip",
 		dependencies = {
@@ -78,7 +94,7 @@ return {
 					{ name = "buffer" },
 				}),
 				experimental = {
-					ghost_text = true,
+					-- ghost_text = true,
 				},
 			})
 		end,
