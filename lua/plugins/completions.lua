@@ -9,33 +9,29 @@ vim.g.copilot_no_tab_map = true
 return {
 	{
 		"hrsh7th/cmp-nvim-lsp",
+		after = "nvim-cmp",
 	},
 	{
 		"github/copilot.vim",
+		event = "InsertEnter",
 	},
-	-- {
-	-- 	"zbirenbaum/copilot.lua",
-	-- 	cmd = "Copilot",
-	-- 	event = "InsertEnter",
-	-- 	config = function()
-	-- 		require("copilot").setup({
-	-- 			suggestion = {
-	-- 				keymap = {
-	-- 					accept = "<C-Z>",
-	-- 				}
-	-- 			}
-	-- 		})
-	-- 	end,
-	-- },
+	{
+
+		"saadparwaiz1/cmp_luasnip",
+		event = "InsertEnter",
+	},
+	{
+		"rafamadriz/friendly-snippets",
+		event = "InsertEnter",
+	},
 	{
 		"L3MON4D3/LuaSnip",
-		dependencies = {
-			"saadparwaiz1/cmp_luasnip",
-			"rafamadriz/friendly-snippets",
-		},
+		event = "CursorMoved",
 	},
 	{
 		"hrsh7th/nvim-cmp",
+		event = { "InsertEnter", "CmdlineEnter" },
+		-- after = "nvim-lspconfig",
 		config = function()
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
@@ -52,10 +48,10 @@ return {
 					documentation = cmp.config.window.bordered(),
 				},
 				mapping = cmp.mapping.preset.insert({
-					["<C-b>"] = cmp.mapping.scroll_docs(-4),
-					["<C-f>"] = cmp.mapping.scroll_docs(4),
+					-- ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+					-- ["<C-f>"] = cmp.mapping.scroll_docs(4),
 					["<C-Space>"] = cmp.mapping.complete(),
-					["<C-e>"] = cmp.mapping.abort(),
+					-- ["<C-e>"] = cmp.mapping.abort(),
 					["<CR>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							if luasnip.expandable() then

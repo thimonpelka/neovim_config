@@ -11,14 +11,16 @@ vim.keymap.set("n", "<leader>cp", vim.diagnostic.goto_prev, {
 return {
 	{
 		"williamboman/mason.nvim",
-		lazy = false,
+		cmd = "Mason",
+		-- lazy = false,
 		config = function()
 			require("mason").setup()
 		end,
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
-		lazy = false,
+		event = "VeryLazy",
+		-- lazy = false,
 		opts = {
 			auto_install = true,
 		},
@@ -36,7 +38,8 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
-		lazy = false,
+		after = "LuaSnip",
+		-- lazy = false,
 		config = function()
 			local ok, mason_registry = pcall(require, "mason-registry")
 			if not ok then
@@ -44,11 +47,6 @@ return {
 				return
 			end
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-			-- [[
-			-- TYPESCRIPT
-			-- ]]
-
 			local lspconfig = require("lspconfig")
 
 			require("mason-lspconfig").setup_handlers({
@@ -58,33 +56,8 @@ return {
 					})
 				end,
 			})
-			-- lspconfig.ts_ls.setup({
-			-- 	capabilities = capabilities,
-			-- })
-			--
-			-- -- [[
-			-- -- SOLARGRAPH
-			-- -- ]]
-			--
-			-- lspconfig.gopls.setup({
-			-- 	capabilities = capabilities,
-			-- })
-			-- lspconfig.solargraph.setup({
-			-- 	capabilities = capabilities,
-			-- })
-			-- lspconfig.cssls.setup({
-			-- 	capabilities = capabilities,
-			-- })
-			-- lspconfig.html.setup({
-			-- 	capabilities = capabilities,
-			-- })
-			-- lspconfig.lua_ls.setup({
-			-- 	capabilities = capabilities,
-			-- })
-			-- lspconfig.pylsp.setup({
-			-- 	capabilities = capabilities,
-			-- })
 
+			-- ANGULAR
 			local angularls_path = mason_registry.get_package("angular-language-server"):get_install_path()
 			local cmd = {
 				"C:\\Users\\thimo\\AppData\\Local\\nvim-data\\mason\\bin\\ngserver.cmd",
