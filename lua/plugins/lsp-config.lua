@@ -109,7 +109,9 @@ return {
 				end,
 			})
 
-			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+			vim.keymap.set("n", "<leader>sh", vim.lsp.buf.hover, {
+				desc = "Show Description",
+			})
 			vim.keymap.set("n", "<leader>sd", vim.lsp.buf.definition, {
 				desc = "Show Definition",
 			})
