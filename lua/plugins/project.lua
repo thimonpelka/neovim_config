@@ -1,15 +1,19 @@
 return {
-	"ahmedkhalf/project.nvim",
-	config = function()
-		require("project_nvim").setup({
+	{
+		"ahmedkhalf/project.nvim",
+		config = function()
+			require("project_nvim").setup({
+				-- manual_mode = true,
+				-- silent_chdir = false,
+				ignore_lsp = {
+					"null-ls",
+				},
+				-- detection_methods = { "pattern", "lsp" }, -- Add if directory change is working wrong
+			})
 
-			-- your configuration comes here
-			-- or leave it empty to use the default settings
-			-- refer to the configuration section below
-		})
-
-		vim.keymap.set("n", "<leader>p", ":Telescope projects<CR>", {
-			desc = "Open Project List",
-		})
-	end,
+			vim.keymap.set("n", "<leader>p", ":Telescope projects<CR>", {
+				desc = "Open Project List",
+			})
+		end,
+	},
 }
