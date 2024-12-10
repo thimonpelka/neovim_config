@@ -10,14 +10,16 @@ vim.keymap.set("n", "<leader>cp", vim.diagnostic.goto_prev, {
 return {
 	{
 		"williamboman/mason.nvim",
-		lazy = false,
+		cmd = "Mason",
+		-- lazy = false,
 		config = function()
 			require("mason").setup()
 		end,
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
-		lazy = false,
+		event = "VeryLazy",
+		-- lazy = false,
 		opts = {
 			auto_install = true,
 		},
@@ -35,7 +37,8 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
-		lazy = false,
+		after = "LuaSnip",
+		-- lazy = false,
 		config = function()
 			local ok, mason_registry = pcall(require, "mason-registry")
 			if not ok then
@@ -43,11 +46,6 @@ return {
 				return
 			end
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-			-- [[
-			-- TYPESCRIPT
-			-- ]]
-
 			local lspconfig = require("lspconfig")
 
 			require("mason-lspconfig").setup_handlers({
@@ -57,33 +55,8 @@ return {
 					})
 				end,
 			})
-			-- lspconfig.ts_ls.setup({
-			-- 	capabilities = capabilities,
-			-- })
-			--
-			-- -- [[
-			-- -- SOLARGRAPH
-			-- -- ]]
-			--
-			-- lspconfig.gopls.setup({
-			-- 	capabilities = capabilities,
-			-- })
-			-- lspconfig.solargraph.setup({
-			-- 	capabilities = capabilities,
-			-- })
-			-- lspconfig.cssls.setup({
-			-- 	capabilities = capabilities,
-			-- })
-			-- lspconfig.html.setup({
-			-- 	capabilities = capabilities,
-			-- })
-			-- lspconfig.lua_ls.setup({
-			-- 	capabilities = capabilities,
-			-- })
-			-- lspconfig.pylsp.setup({
-			-- 	capabilities = capabilities,
-			-- })
 
+			-- ANGULAR
 			local angularls_path = mason_registry.get_package("angular-language-server"):get_install_path()
 			local user_home = vim.fn.expand("~")
 			local mason_bin_path = user_home .. "\\AppData\\Local\\nvim-data\\mason\\bin\\ngserver.cmd"
@@ -110,7 +83,9 @@ return {
 				end,
 			})
 
-			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+			vim.keymap.set("n", "<leader>sk", vim.lsp.buf.hover, {
+				desc = "Show Description",
+			})
 			vim.keymap.set("n", "<leader>sd", vim.lsp.buf.definition, {
 				desc = "Show Definition",
 			})
