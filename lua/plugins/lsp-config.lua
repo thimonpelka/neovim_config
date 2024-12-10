@@ -7,7 +7,6 @@ vim.keymap.set("n", "<leader>cp", vim.diagnostic.goto_prev, {
 	desc = "Go to prev Diagnostics",
 })
 
-
 return {
 	{
 		"williamboman/mason.nvim",
@@ -86,8 +85,10 @@ return {
 			-- })
 
 			local angularls_path = mason_registry.get_package("angular-language-server"):get_install_path()
+			local user_home = vim.fn.expand("~")
+			local mason_bin_path = user_home .. "\\AppData\\Local\\nvim-data\\mason\\bin\\ngserver.cmd"
 			local cmd = {
-				"C:\\Users\\thimo\\AppData\\Local\\nvim-data\\mason\\bin\\ngserver.cmd",
+				mason_bin_path,
 				"--stdio",
 				"--tsProbeLocations",
 				table.concat({
