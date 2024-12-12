@@ -6,7 +6,7 @@ return {
 		"nvim-telescope/telescope.nvim",
 		priority = 1000,
 		tag = "0.1.5",
-		dependencies = { "nvim-lua/plenary.nvim" },
+		dependencies = { "nvim-telescope/telescope-fzf-native.nvim", "nvim-lua/plenary.nvim" },
 		config = function()
 			require("telescope").setup({
 				-- extensions = {
@@ -14,6 +14,9 @@ return {
 				-- 		require("telescope.themes").get_dropdown({}),
 				-- 	},
 				-- },
+				defaults = {
+					file_ignore_patterns = { ".git/", "node_modules/" }, -- Add patterns to ignore Git files and more
+				},
 			})
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<leader>o", builtin.find_files, {
