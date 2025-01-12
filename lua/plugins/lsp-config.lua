@@ -56,6 +56,22 @@ return {
 				end,
 			})
 
+			-- In your LSP config, before the general handler
+			-- lspconfig.pyright.setup({
+			-- 	capabilities = capabilities,
+			-- 	settings = {
+			-- 		python = {
+			-- 			analysis = {
+			-- 				typeCheckingMode = "basic",
+			-- 			},
+			-- 		},
+			-- 	},
+			-- 	-- Enable formatting
+			-- 	on_attach = function(client, bufnr)
+			-- 		client.server_capabilities.documentFormattingProvider = true
+			-- 	end,
+			-- })
+
 			-- ANGULAR
 			local angularls_path = mason_registry.get_package("angular-language-server"):get_install_path()
 			local user_home = vim.fn.expand("~")

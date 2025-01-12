@@ -15,7 +15,13 @@ return {
 				-- 	},
 				-- },
 				defaults = {
-					file_ignore_patterns = { ".git/", "node_modules/" }, -- Add patterns to ignore Git files and more
+					file_ignore_patterns = {
+						".git/",
+						"node_modules/",
+						"**/node_modules/**",
+						"__pycache__",
+						"%.pyc$", -- To ignore .pyc files
+					}, -- Add patterns to ignore Git files and more
 				},
 			})
 			local builtin = require("telescope.builtin")
