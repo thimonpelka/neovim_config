@@ -6,7 +6,10 @@ return {
 		"nvim-telescope/telescope.nvim",
 		priority = 1000,
 		tag = "0.1.5",
-		dependencies = { "nvim-telescope/telescope-fzf-native.nvim", "nvim-lua/plenary.nvim" },
+		dependencies = {
+			"nvim-telescope/telescope-fzf-native.nvim",
+			"nvim-lua/plenary.nvim",
+		},
 		config = function()
 			require("telescope").setup({
 				-- extensions = {

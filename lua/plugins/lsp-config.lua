@@ -7,6 +7,7 @@ vim.keymap.set("n", "<leader>cp", vim.diagnostic.goto_prev, {
 	desc = "Go to prev Diagnostics",
 })
 
+
 return {
 	{
 		"williamboman/mason.nvim",
@@ -23,30 +24,29 @@ return {
 		opts = {
 			auto_install = true,
 		},
-		-- config = function()
-		-- 	require("mason-lspconfig").setup({
-		-- 		auto_install = true,
-		-- 	})
-		--
-		-- 	local ok, mason_registry = pcall(require, "mason-registry")
-		-- 	if not ok then
-		-- 		vim.notify("mason-registry could not be loaded")
-		-- 		return
-		-- 	end
-		-- end,
 	},
 	{
 		"neovim/nvim-lspconfig",
-		after = "LuaSnip",
-		-- lazy = false,
+		dependencies = {
+			"saghen/blink.cmp",
+			{
+				"folke/lazydev.nvim",
+				opts = {
+					library = {
+						{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+					},
+				},
+			},
+		},
 		config = function()
+			local capabilities = require("blink.cmp").get_lsp_capabilities()
+			local lspconfig = require("lspconfig")
+
 			local ok, mason_registry = pcall(require, "mason-registry")
 			if not ok then
 				vim.notify("mason-registry could not be loaded")
 				return
 			end
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			local lspconfig = require("lspconfig")
 
 			require("mason-lspconfig").setup_handlers({
 				function(server)
@@ -55,22 +55,6 @@ return {
 					})
 				end,
 			})
-
-			-- In your LSP config, before the general handler
-			-- lspconfig.pyright.setup({
-			-- 	capabilities = capabilities,
-			-- 	settings = {
-			-- 		python = {
-			-- 			analysis = {
-			-- 				typeCheckingMode = "basic",
-			-- 			},
-			-- 		},
-			-- 	},
-			-- 	-- Enable formatting
-			-- 	on_attach = function(client, bufnr)
-			-- 		client.server_capabilities.documentFormattingProvider = true
-			-- 	end,
-			-- })
 
 			-- ANGULAR
 			local angularls_path = mason_registry.get_package("angular-language-server"):get_install_path()
@@ -114,21 +98,6 @@ return {
 			vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, {
 				desc = "Rename Variable Globally",
 			})
-		end,
-	},
-	{
-		"ray-x/lsp_signature.nvim",
-		event = "InsertEnter",
-		opts = {
-			bind = true,
-			handler_opts = {
-				border = "rounded",
-			},
-			hint_prefix = "",
-			transparency = 10,
-		},
-		config = function(_, opts)
-			require("lsp_signature").setup(opts)
 		end,
 	},
 }
