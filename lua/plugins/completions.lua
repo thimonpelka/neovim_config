@@ -32,8 +32,10 @@ return {
 				preset = "default",
 				["<C-i>"] = { "select_and_accept" },
 
+				-- Deactivate unneeded bindings
 				["<C-y>"] = {},
-				-- ["<Tab>"] = { },
+				['<Tab>'] = {},
+				['<S-Tab>'] = {},
 			},
 
 			appearance = {
