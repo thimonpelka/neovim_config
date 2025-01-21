@@ -1,83 +1,67 @@
+-- Diangostics keybinds
+vim.keymap.set("n", "<leader>cn", vim.diagnostic.goto_next, {
+	desc = "Go to next Diagnostics",
+})
+
+vim.keymap.set("n", "<leader>cp", vim.diagnostic.goto_prev, {
+	desc = "Go to prev Diagnostics",
+})
+
+
 return {
 	{
 		"williamboman/mason.nvim",
-		lazy = false,
+		cmd = "Mason",
+		-- lazy = false,
 		config = function()
 			require("mason").setup()
 		end,
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
-		lazy = false,
+		event = "VeryLazy",
+		-- lazy = false,
 		opts = {
 			auto_install = true,
 		},
-		config = function()
-			require("mason-lspconfig").setup({
-				auto_install = true,
-			})
-
-			local ok, mason_registry = pcall(require, "mason-registry")
-			if not ok then
-				vim.notify("mason-registry could not be loaded")
-				return
-			end
-		end,
 	},
 	{
 		"neovim/nvim-lspconfig",
-		lazy = false,
+		dependencies = {
+			"saghen/blink.cmp",
+			{
+				"folke/lazydev.nvim",
+				opts = {
+					library = {
+						{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+					},
+				},
+			},
+		},
 		config = function()
+			local capabilities = require("blink.cmp").get_lsp_capabilities()
+			local lspconfig = require("lspconfig")
+
 			local ok, mason_registry = pcall(require, "mason-registry")
 			if not ok then
 				vim.notify("mason-registry could not be loaded")
 				return
 			end
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-			-- [[
-			-- TYPESCRIPT
-			-- ]]
-
-			local lspconfig = require("lspconfig")
 
 			require("mason-lspconfig").setup_handlers({
 				function(server)
 					lspconfig[server].setup({
-						capabilities = capabilities
+						capabilities = capabilities,
 					})
 				end,
 			})
-			-- lspconfig.ts_ls.setup({
-			-- 	capabilities = capabilities,
-			-- })
-			--
-			-- -- [[
-			-- -- SOLARGRAPH
-			-- -- ]]
-			--
-			-- lspconfig.gopls.setup({
-			-- 	capabilities = capabilities,
-			-- })
-			-- lspconfig.solargraph.setup({
-			-- 	capabilities = capabilities,
-			-- })
-			-- lspconfig.cssls.setup({
-			-- 	capabilities = capabilities,
-			-- })
-			-- lspconfig.html.setup({
-			-- 	capabilities = capabilities,
-			-- })
-			-- lspconfig.lua_ls.setup({
-			-- 	capabilities = capabilities,
-			-- })
-			-- lspconfig.pylsp.setup({
-			-- 	capabilities = capabilities,
-			-- })
 
+			-- ANGULAR
 			local angularls_path = mason_registry.get_package("angular-language-server"):get_install_path()
+			local user_home = vim.fn.expand("~")
+			local mason_bin_path = user_home .. "\\AppData\\Local\\nvim-data\\mason\\bin\\ngserver.cmd"
 			local cmd = {
-				"C:\\Users\\thimo\\AppData\\Local\\nvim-data\\mason\\bin\\ngserver.cmd",
+				mason_bin_path,
 				"--stdio",
 				"--tsProbeLocations",
 				table.concat({
@@ -99,7 +83,9 @@ return {
 				end,
 			})
 
-			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+			vim.keymap.set("n", "<leader>sk", vim.lsp.buf.hover, {
+				desc = "Show Description",
+			})
 			vim.keymap.set("n", "<leader>sd", vim.lsp.buf.definition, {
 				desc = "Show Definition",
 			})
@@ -112,21 +98,6 @@ return {
 			vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, {
 				desc = "Rename Variable Globally",
 			})
-		end,
-	},
-	{
-		"ray-x/lsp_signature.nvim",
-		event = "InsertEnter",
-		opts = {
-			bind = true,
-			handler_opts = {
-				border = "rounded",
-			},
-			hint_prefix = "",
-			transparency = 10,
-		},
-		config = function(_, opts)
-			require("lsp_signature").setup(opts)
 		end,
 	},
 }

@@ -6,7 +6,11 @@ return {
 	},
 	event = "LspAttach",
 	config = function()
-		require("tiny-code-action").setup()
+		require("tiny-code-action").setup({
+			backend = "vim",
+		})
+
+
 		vim.keymap.set("n", "<leader>ca", function()
 			require("tiny-code-action").code_action()
 		end, { noremap = true, silent = true, desc="Open Code Action Menu" })

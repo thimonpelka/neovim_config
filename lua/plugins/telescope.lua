@@ -1,18 +1,30 @@
 return {
-	{
-		"nvim-telescope/telescope-ui-select.nvim",
-	},
+	-- {
+	-- 	"nvim-telescope/telescope-ui-select.nvim",
+	-- },
 	{
 		"nvim-telescope/telescope.nvim",
 		priority = 1000,
 		tag = "0.1.5",
-		dependencies = { "nvim-lua/plenary.nvim" },
+		dependencies = {
+			"nvim-telescope/telescope-fzf-native.nvim",
+			"nvim-lua/plenary.nvim",
+		},
 		config = function()
 			require("telescope").setup({
-				extensions = {
-					["ui-select"] = {
-						require("telescope.themes").get_dropdown({}),
-					},
+				-- extensions = {
+				-- 	["ui-select"] = {
+				-- 		require("telescope.themes").get_dropdown({}),
+				-- 	},
+				-- },
+				defaults = {
+					file_ignore_patterns = {
+						".git/",
+						"node_modules/",
+						"**/node_modules/**",
+						"__pycache__",
+						"%.pyc$", -- To ignore .pyc files
+					}, -- Add patterns to ignore Git files and more
 				},
 			})
 			local builtin = require("telescope.builtin")
@@ -29,7 +41,7 @@ return {
 				silent = true,
 			})
 
-			require("telescope").load_extension("ui-select")
+			-- require("telescope").load_extension("ui-select")
 		end,
 	},
 }
