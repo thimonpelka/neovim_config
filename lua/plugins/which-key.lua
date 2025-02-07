@@ -11,6 +11,8 @@ return {
 			-- { "<leader>g", group = "Git" },
 			{ "<leader>t", group = "Terminal" },
 			{ "<leader>k", group = "TODOs" },
+			{ "<leader>q", group = "QuickFix"},
+			{ "<leader>h", group = "Harpoon"},
 		})
 	end,
 }

@@ -40,6 +40,10 @@ return {
 				desc = "Search File History",
 				silent = true,
 			})
+			-- vim.keymap.set("n", "<leader><leader>", , {
+			-- 	desc = "Search File History",
+			-- 	silent = true,
+			-- })
 
 			-- require("telescope").load_extension("ui-select")
 		end,

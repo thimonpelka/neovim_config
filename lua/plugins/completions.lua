@@ -34,8 +34,6 @@ return {
 
 				-- Deactivate unneeded bindings
 				["<C-y>"] = {},
-				['<Tab>'] = {},
-				['<S-Tab>'] = {},
 			},
 
 			appearance = {

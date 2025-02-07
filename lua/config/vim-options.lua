@@ -24,9 +24,16 @@ vim.keymap.set('n', "<leader>l", ":Lazy<CR>", {
 	desc = "Open Lazy"
 })
 
-
 vim.keymap.set('n', "<leader>cd", ":cd %:p:h<CR>", {
 	desc = "Change working directory to current File"
+})
+
+vim.keymap.set("n", "<leader>qn", ":cnext<CR>", {
+	desc = "Next item on quickfix list"
+})
+
+vim.keymap.set("n", "<leader>qp", ":cprev<CR>", {
+	desc = "Next item on quickfix list"
 })
 
 -- vim.keymap.set({ "v", "n", "i" }, "<C-l>", "<Esc>:wincmd l<CR>", {})
@@ -34,7 +41,7 @@ vim.keymap.set('n', "<leader>cd", ":cd %:p:h<CR>", {
 -- vim.keymap.set({ "v", "n", "i" }, "<C-j>", "<Esc>:wincmd j<CR>", {})
 -- vim.keymap.set({ "v", "n", "i" }, "<C-h>", "<Esc>:wincmd h<CR>", {})
 
-vim.keymap.set({ "v", "n", "i" }, "<C-i>", "<Esc>[{", {})
+-- vim.keymap.set({ "v", "n", "i" }, "<C-i>", "<Esc>[{", {})
 -- vim.keymap.set({ "v", "n", "i" }, "<C-m>", "<Esc>]}", {})
 
 

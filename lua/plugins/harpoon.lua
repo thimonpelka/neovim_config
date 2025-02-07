@@ -54,6 +54,10 @@ return {
 				harpoon:list():select(3)
 			end, { desc = "Go to harpoon 3" })
 
+			vim.keymap.set("n", "<leader>hq", function()
+				harpoon.ui:toggle_quick_menu(harpoon:list())
+			end, { desc = "Go to harpoon 4" })
+
 
 			-- basic telescope configuration
 			local conf = require("telescope.config").values
