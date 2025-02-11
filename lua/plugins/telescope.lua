@@ -11,12 +11,23 @@ return {
 			"nvim-lua/plenary.nvim",
 		},
 		config = function()
-			require("telescope").setup({
+			local telescope = require("telescope")
+			local actions = require("telescope.actions")
+
+			telescope.setup({
 				-- extensions = {
 				-- 	["ui-select"] = {
 				-- 		require("telescope.themes").get_dropdown({}),
 				-- 	},
 				-- },
+				mappings = {
+					i = {
+						["<C-Q>"] = actions.smart_send_to_qflist + actions.open_qflist, -- In insert mode
+					},
+					n = {
+						["<C-Q>"] = actions.smart_send_to_qflist + actions.open_qflist, -- In normal mode
+					},
+				},
 				defaults = {
 					file_ignore_patterns = {
 						".git/",
