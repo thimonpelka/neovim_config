@@ -11,6 +11,7 @@ return {
 				null_ls.builtins.formatting.gofumpt,
 				-- null_ls.builtins.diagnostics.flake8,
 				-- null_ls.builtins.diagnostics.pylint,
+				-- null_ls.builtins.diagnostics.ruff,
 				null_ls.builtins.diagnostics.mypy.with({
 					extra_args = { 
 						-- "--ignore-missing-imports",
