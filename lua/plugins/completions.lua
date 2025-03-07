@@ -5,6 +5,8 @@ vim.keymap.set("i", "<C-Z>", 'copilot#Accept("<CR>")', {
 	replace_keycodes = false,
 })
 vim.g.copilot_no_tab_map = true
+vim.keymap.set("v", "<S-Tab>", "<gv", { noremap = true, silent = true })
+vim.keymap.set("v", "<Tab>", ">gv", { noremap = true, silent = true })
 
 return {
 	{
@@ -14,7 +16,9 @@ return {
 	{
 		"saghen/blink.cmp",
 		-- optional: provides snippets for the snippet source
-		-- dependencies = "rafamadriz/friendly-snippets",
+		dependencies = {
+			{ "L3MON4D3/LuaSnip", version = "2.*" },
+		},
 
 		-- use a release tag to download pre-built binaries
 		version = "*",
@@ -30,10 +34,47 @@ return {
 			-- See the full "keymap" documentation for information on defining your own keymap.
 			keymap = {
 				preset = "default",
-				["<C-i>"] = { "select_and_accept" },
+				["<C-l>"] = {
+					function(ctx)
+						require("blink.cmp").select_and_accept(ctx)
+					end,
+				},
 
 				-- Deactivate unneeded bindings
-				["<C-y>"] = {},
+				-- ["<C-y>"] = {},
+				-- ["<Tab>"] = { "snippet_forward" },
+				-- ["<S-Tab>"] = {},
+				-- ["<Tab>"] = { "snippet_forward", "fallback" },
+				-- ["<S-Tab>"] = { "snippet_backward", "fallback" },
+				-- ["<Tab>"] = {
+				-- 	function(cmp)
+				-- 		if cmp.visible() then
+				-- 			cmp.select_next_item()
+				-- 			return true
+				-- 		elseif cmp.snippet_forward() then
+				-- 			-- Jumps to next snippet placeholder
+				-- 			return true
+				-- 		else
+				-- 			return false
+				-- 		end
+				-- 	end,
+				-- },
+
+				-- ["<S-Tab>"] = {
+				-- 	function(fallback)
+				-- 		if require("blink").cmp.visible() then
+				-- 			require("blink").cmp.select_prev_item()
+				-- 		elseif require("blink").cmp.snippet_backward() then
+				-- 			-- Jumps to previous snippet placeholder
+				-- 		else
+				-- 			fallback()
+				-- 		end
+				-- 	end,
+				-- },
+			},
+
+			snippets = {
+				preset = "luasnip",
 			},
 
 			appearance = {
@@ -44,6 +85,13 @@ return {
 				-- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
 				-- Adjusts spacing to ensure icons are aligned
 				nerd_font_variant = "mono",
+			},
+
+			completion = {
+				documentation = {
+					auto_show = true,
+					auto_show_delay_ms = 200,
+				},
 			},
 
 			-- Default list of enabled providers defined so that you can extend it
@@ -58,6 +106,48 @@ return {
 		},
 		opts_extend = { "sources.default" },
 	},
+	{
+		"L3MON4D3/LuaSnip",
+		version = "2.*",
+		dependencies = {
+			-- Optional: Add snippet collections
+		},
+		config = function()
+			require("luasnip").setup({
+				history = true,
+				updateevents = "TextChanged,TextChangedI",
+				enable_autosnippets = true,
+			})
+
+			-- Load friendly-snippets if you added it as a dependency
+			-- Get the appropriate path separator based on OS
+			local path_separator = vim.loop.os_uname().sysname:match("Windows") and "\\" or "/"
+
+			-- Build paths that work on both Windows and Linux
+			local config_path = vim.fn.stdpath("config")
+			local snippets_path = config_path .. path_separator .. "lua" .. path_separator .. "snippets"
+
+			-- Load snippets from your config directory
+			require("luasnip.loaders.from_vscode").lazy_load({
+				paths = { snippets_path },
+			})
+
+			vim.keymap.set({ "i", "s" }, "<Tab>", function()
+				if require("luasnip").jumpable(1) then
+					require("luasnip").jump(1)
+				else
+					vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, true, true), "n", false)
+				end
+			end, { silent = true })
+
+			vim.keymap.set({ "i", "s" }, "<S-Tab>", function()
+				if require("luasnip").jumpable(-1) then
+					require("luasnip").jump(-1)
+				end
+			end, { silent = true })
+		end,
+	},
+
 	-- {
 	-- 	"hrsh7th/cmp-nvim-lsp",
 	-- 	after = "nvim-cmp",

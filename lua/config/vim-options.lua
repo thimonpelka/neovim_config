@@ -36,14 +36,6 @@ vim.keymap.set("n", "<leader>qp", ":cprev<CR>", {
 	desc = "Next item on quickfix list"
 })
 
--- vim.keymap.set({ "v", "n", "i" }, "<C-l>", "<Esc>:wincmd l<CR>", {})
--- vim.keymap.set({ "v", "n", "i" }, "<C-k>", "<Esc>:wincmd k<CR>", {})
--- vim.keymap.set({ "v", "n", "i" }, "<C-j>", "<Esc>:wincmd j<CR>", {})
--- vim.keymap.set({ "v", "n", "i" }, "<C-h>", "<Esc>:wincmd h<CR>", {})
-
--- vim.keymap.set({ "v", "n", "i" }, "<C-i>", "<Esc>[{", {})
--- vim.keymap.set({ "v", "n", "i" }, "<C-m>", "<Esc>]}", {})
-
 
 vim.keymap.set("n", "<leader>C", ":e $MYVIMRC<CR>", {
 	desc = "Open NVIM Config"

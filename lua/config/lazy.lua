@@ -33,3 +33,8 @@ require("lazy").setup({
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
+
+-- Load snippets --------------------------------------------------------------
+for _, path in ipairs(vim.api.nvim_get_runtime_file("lua/snippets/*.lua", true)) do
+    loadfile(path)()
+end
