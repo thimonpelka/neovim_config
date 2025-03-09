@@ -5,7 +5,7 @@ return {
 	{
 		"nvim-telescope/telescope.nvim",
 		priority = 1000,
-		tag = "0.1.5",
+		tag = "0.1.8",
 		dependencies = {
 			"nvim-telescope/telescope-fzf-native.nvim",
 			"nvim-lua/plenary.nvim",
@@ -20,15 +20,15 @@ return {
 				-- 		require("telescope.themes").get_dropdown({}),
 				-- 	},
 				-- },
-				mappings = {
-					i = {
-						["<C-Tab>"] = actions.smart_send_to_qflist + actions.open_qflist, -- In insert mode
-					},
-					n = {
-						["<C-Tab>"] = actions.smart_send_to_qflist + actions.open_qflist, -- In normal mode
-					},
-				},
 				defaults = {
+					mappings = {
+						i = {
+							["<C-y>"] = actions.smart_send_to_qflist + actions.open_qflist, -- In insert mode
+						},
+						n = {
+							["<C-y>"] = actions.smart_send_to_qflist + actions.open_qflist, -- In normal mode
+						},
+					},
 					file_ignore_patterns = {
 						".git/",
 						"node_modules/",
@@ -38,7 +38,9 @@ return {
 					}, -- Add patterns to ignore Git files and more
 				},
 			})
+
 			local builtin = require("telescope.builtin")
+
 			vim.keymap.set("n", "<leader>o", builtin.find_files, {
 				desc = "Open File",
 				silent = true,
