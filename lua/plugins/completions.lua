@@ -8,6 +8,8 @@ vim.g.copilot_no_tab_map = true
 vim.keymap.set("v", "<S-Tab>", "<gv", { noremap = true, silent = true })
 vim.keymap.set("v", "<Tab>", ">gv", { noremap = true, silent = true })
 
+local trigger_text = ";"
+
 return {
 	{
 		"github/copilot.vim",
@@ -33,12 +35,14 @@ return {
 			-- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
 			-- See the full "keymap" documentation for information on defining your own keymap.
 			keymap = {
-				preset = "default",
-				["<C-l>"] = {
-					function(ctx)
-						require("blink.cmp").select_and_accept(ctx)
-					end,
-				},
+				preset = "none",
+				["<C-l>"] = { "select_and_accept", "fallback" },
+				["<C-k>"] = { "select_prev", "hide" },
+				["<C-j>"] = { "select_next", "show", "hide" },
+				["<C-h>"] = { "show" },
+
+				["<C-p>"] = { "fallback_to_mappings" },
+				["<C-n>"] = { "fallback_to_mappings" },
 
 				-- Deactivate unneeded bindings
 				-- ["<C-y>"] = {},
@@ -98,6 +102,47 @@ return {
 			-- elsewhere in your config, without redefining it, due to `opts_extend`
 			sources = {
 				default = { "lsp", "path", "snippets", "buffer" },
+				providers = {
+					lsp = {
+						-- Disable completion for some LSP servers
+					},
+					snippets = {
+						-- Disable snippets for some filetypes
+						score_offset = 1000,
+						-- should_show_items = function()
+						-- 	local col = vim.api.nvim_win_get_cursor(0)[2]
+						-- 	local before_cursor = vim.api.nvim_get_current_line():sub(1, col)
+						-- 	-- NOTE: remember that `trigger_text` is modified at the top of the file
+						-- 	return before_cursor:match(trigger_text .. "%w*$") ~= nil
+						-- end,
+						-- -- After accepting the completion, delete the trigger_text characters
+						-- -- from the final inserted text
+						-- -- Modified transform_items function based on suggestion by `synic` so
+						-- -- that the luasnip source is not reloaded after each transformation
+						-- -- https://github.com/linkarzu/dotfiles-latest/discussions/7#discussion-7849902
+						-- transform_items = function(_, items)
+						-- 	local col = vim.api.nvim_win_get_cursor(0)[2]
+						-- 	local before_cursor = vim.api.nvim_get_current_line():sub(1, col)
+						-- 	local trigger_pos = before_cursor:find(trigger_text .. "[^" .. trigger_text .. "]*$")
+						-- 	if trigger_pos then
+						-- 		for _, item in ipairs(items) do
+						-- 			if not item.trigger_text_modified then
+						-- 				---@diagnostic disable-next-line: inject-field
+						-- 				item.trigger_text_modified = true
+						-- 				item.textEdit = {
+						-- 					newText = item.insertText or item.label,
+						-- 					range = {
+						-- 						start = { line = vim.fn.line(".") - 1, character = trigger_pos - 1 },
+						-- 						["end"] = { line = vim.fn.line(".") - 1, character = col },
+						-- 					},
+						-- 				}
+						-- 			end
+						-- 		end
+						-- 	end
+						-- 	return items
+						-- end,
+					},
+				},
 			},
 
 			signature = {

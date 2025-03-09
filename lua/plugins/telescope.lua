@@ -22,10 +22,10 @@ return {
 				-- },
 				mappings = {
 					i = {
-						["<C-Q>"] = actions.smart_send_to_qflist + actions.open_qflist, -- In insert mode
+						["<C-Tab>"] = actions.smart_send_to_qflist + actions.open_qflist, -- In insert mode
 					},
 					n = {
-						["<C-Q>"] = actions.smart_send_to_qflist + actions.open_qflist, -- In normal mode
+						["<C-Tab>"] = actions.smart_send_to_qflist + actions.open_qflist, -- In normal mode
 					},
 				},
 				defaults = {
