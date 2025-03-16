@@ -1,12 +1,11 @@
 -- Diangostics keybinds
-vim.keymap.set("n", "<leader>cn", vim.diagnostic.goto_next, {
+vim.keymap.set("n", "-e", vim.diagnostic.goto_next, {
 	desc = "Go to next Diagnostics",
 })
 
-vim.keymap.set("n", "<leader>cp", vim.diagnostic.goto_prev, {
+vim.keymap.set("n", "-E", vim.diagnostic.goto_prev, {
 	desc = "Go to prev Diagnostics",
 })
-
 
 return {
 	{
@@ -14,7 +13,34 @@ return {
 		cmd = "Mason",
 		-- lazy = false,
 		config = function()
-			require("mason").setup()
+			require("mason").setup({
+				ensure_installed = {
+					"angularls",
+					"autoflake",
+					"black",
+					"css-lsp cssls",
+					"django-template-lsp",
+					"eslint_d",
+					"flake8",
+					"gofumpt",
+					"google-java-format",
+					"gopls",
+					"html-lsp html",
+					"isort",
+					"java_language_server",
+					"jdtls",
+					"lua_ls",
+					"mypy",
+					"prettier",
+					"pylint",
+					"python-lsp-server pylsp",
+					"ruff",
+					"ruff-lsp",
+					"stylua",
+					"ts_ls",
+				},
+				automatic_installation = true,
+			})
 		end,
 	},
 	{
