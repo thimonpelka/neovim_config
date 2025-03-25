@@ -13,6 +13,12 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.swapfile = false
 
+-- Use tabs instead of spaces
+vim.opt.tabstop = 4
+vim.opt.expandtab = false
+vim.opt.shiftwidth = 4
+vim.opt.smartindent = true
+
 vim.keymap.set({ "v", "n", "i" }, "<C-s>", "<Esc>:wa<CR>", {})
 vim.keymap.set({ "v", "n", "i" }, "<C-a>", "<Esc>:wqa<CR>", {})
 -- vim.keymap.set({ "v", "n", "i" }, "<C-d>", "<Esc>Vyp", {})
