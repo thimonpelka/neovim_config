@@ -5,11 +5,11 @@ return {
 
 		local keymap = {
 			["<C-u>"] = function()
-				neoscroll.ctrl_u({ duration = 250 })
+				neoscroll.ctrl_u({ duration = 50 })
 				-- neoscroll.zz({ half_win_duration = 250 })
 			end,
 			["<C-d>"] = function()
-				neoscroll.ctrl_d({ duration = 250 })
+				neoscroll.ctrl_d({ duration = 50 })
 				-- neoscroll.zz({ half_win_duration = 250 })
 			end,
 		}

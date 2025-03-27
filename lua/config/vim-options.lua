@@ -42,6 +42,18 @@ vim.keymap.set("n", "<leader>qp", ":cprev<CR>", {
 	desc = "Next item on quickfix list"
 })
 
+vim.keymap.set("n", "<leader>qo", ":copen<CR>", {
+	desc = "Open quickfix list"
+})
+
+vim.keymap.set("n", "K", "5k", {
+	desc = "Move 5 lines up"
+})
+
+vim.keymap.set("n", "J", "5j", {
+	desc = "Move 5 lines down"
+})
+
 
 vim.keymap.set("n", "<leader>C", ":e $MYVIMRC<CR>", {
 	desc = "Open NVIM Config"
