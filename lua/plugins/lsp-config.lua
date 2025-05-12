@@ -9,46 +9,45 @@ vim.keymap.set("n", "-E", vim.diagnostic.goto_prev, {
 
 return {
 	{
-		"williamboman/mason.nvim",
+		"mason-org/mason.nvim",
 		cmd = "Mason",
+		version = "1.10.0",
 		-- lazy = false,
 		config = function()
-			require("mason").setup({
-				ensure_installed = {
-					"angularls",
-					"autoflake",
-					"black",
-					"css-lsp cssls",
-					"django-template-lsp",
-					"eslint_d",
-					"flake8",
-					"gofumpt",
-					"google-java-format",
-					"gopls",
-					"html-lsp html",
-					"isort",
-					"java_language_server",
-					"jdtls",
-					"lua_ls",
-					"mypy",
-					"prettier",
-					"pylint",
-					"python-lsp-server pylsp",
-					"ruff",
-					"ruff-lsp",
-					"stylua",
-					"ts_ls",
-				},
-				automatic_installation = true,
-			})
+			require("mason").setup()
 		end,
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
 		event = "VeryLazy",
+		version = "1.32.0",
 		-- lazy = false,
 		opts = {
+			ensure_installed = {
+				"angularls",
+				"autoflake",
+				"black",
+				"css-lsp cssls",
+				"django-template-lsp",
+				"eslint_d",
+				"flake8",
+				"gofumpt",
+				"google-java-format",
+				"gopls",
+				"html-lsp html",
+				"isort",
+				"java_language_server",
+				"jdtls",
+				"lua_ls",
+				"mypy",
+				"prettier",
+				"pylsp",
+				"ruff",
+				-- "stylua",
+				"ts_ls",
+			},
 			auto_install = true,
+			automatic_installation = true,
 		},
 	},
 	{
@@ -100,6 +99,10 @@ return {
 					vim.uv.cwd(),
 				}, ","),
 			}
+
+			lspconfig.glsl_analyzer.setup({
+				capabilities = capabilities,
+			})
 
 			lspconfig.angularls.setup({
 				cmd = cmd,
