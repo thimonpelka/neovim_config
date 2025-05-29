@@ -1,4 +1,3 @@
-
 return {
 	{
 		"stevearc/oil.nvim",
@@ -11,9 +10,17 @@ return {
 		-- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
 		lazy = false,
 		config = function(_, opts)
-			require("oil").setup(opts)
+			require("oil").setup({
+				opts,
+				keymaps = {
+					["<C-s>"] = {},
+					["<C-v>"] = { "actions.select", opts = { vertical = true } },
+					["s"] = {"actions.parent", mode = "n"},
+					["ö"] = "actions.select",
+				}
+			})
 
-			vim.keymap.set("n", "<leader>O", function()
+			vim.keymap.set("n", "<leader>e", function()
 				require("oil").open()
 			end, { desc = "Open Oil" })
 		end,
