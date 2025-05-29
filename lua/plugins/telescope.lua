@@ -7,7 +7,11 @@ return {
 		priority = 1000,
 		tag = "0.1.8",
 		dependencies = {
-			"nvim-telescope/telescope-fzf-native.nvim",
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				build = "make",
+			},
+			-- "nvim-telescope/telescope-file-browser.nvim",
 			"nvim-lua/plenary.nvim",
 		},
 		config = function()
@@ -37,6 +41,14 @@ return {
 						"%.pyc$", -- To ignore .pyc files
 					}, -- Add patterns to ignore Git files and more
 				},
+				extensions = {
+					fzf = {
+						fuzzy = true, -- false will only do exact matching
+						override_generic_sorter = true, -- override the generic sorter
+						override_file_sorter = true, -- override the file sorter
+						case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+					},
+				},
 			})
 
 			local builtin = require("telescope.builtin")
@@ -59,6 +71,13 @@ return {
 			-- })
 
 			-- require("telescope").load_extension("ui-select")
+			require("telescope").load_extension("fzf")
+			-- require("telescope").load_extension("file_browser")
+
+			-- vim.keymap.set("n", "<C-e>", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", {
+			-- 	desc = "File Browser",
+			-- 	silent = true,
+			-- })
 		end,
 	},
 }
