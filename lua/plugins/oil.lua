@@ -14,8 +14,8 @@ return {
 				opts,
 				keymaps = {
 					["<C-s>"] = {},
-					["<C-v>"] = { "actions.select", opts = { vertical = true } },
-					["s"] = {"actions.parent", mode = "n"},
+					["s"] = { "actions.select", opts = { vertical = true } },
+					["r"] = {"actions.parent", mode = "n"},
 					["ö"] = "actions.select",
 				}
 			})
