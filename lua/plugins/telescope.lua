@@ -32,6 +32,7 @@ return {
 						n = {
 							["<C-y>"] = actions.smart_send_to_qflist + actions.open_qflist, -- In normal mode
 							["s"] = actions.select_vertical, -- Select horizontally
+							["ö"] = actions.select_default, -- Select default action
 						},
 					},
 					file_ignore_patterns = {
