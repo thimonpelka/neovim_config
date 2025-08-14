@@ -1,0 +1,32 @@
+-- Testing framework for Neovim
+
+-- INFO: Currently disabled due to issues with the dotnet adapter !!!!
+
+-- return {
+-- 	"nvim-neotest/neotest",
+-- 	dependencies = {
+-- 		"nvim-neotest/nvim-nio",
+-- 		"nvim-lua/plenary.nvim",
+-- 		"antoinemadec/FixCursorHold.nvim",
+-- 		"nvim-treesitter/nvim-treesitter",
+--
+-- 		-- Language-specific adapters
+-- 		-- Adapter for dotnet
+-- 		"Issafalcon/neotest-dotnet",
+-- 	},
+-- 	config = function()
+-- 		require("neotest").setup({
+-- 			discovery = {
+-- 				enabled = false,
+-- 			},
+-- 			-- log_level = vim.log.levels.DEBUG,
+-- 			adapters = {
+-- 				require("neotest-dotnet"),
+-- 			},
+-- 		})
+--
+-- 		vim.keymap.set("n", "<leader>tf", function()
+-- 			require("neotest").run.run(vim.fn.expand("%"))
+-- 		end, { desc = "Run file tests" })
+-- 	end,
+-- }
