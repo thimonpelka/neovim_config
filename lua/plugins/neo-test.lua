@@ -3,30 +3,51 @@
 -- INFO: Currently disabled due to issues with the dotnet adapter !!!!
 
 -- return {
--- 	"nvim-neotest/neotest",
--- 	dependencies = {
--- 		"nvim-neotest/nvim-nio",
--- 		"nvim-lua/plenary.nvim",
--- 		"antoinemadec/FixCursorHold.nvim",
--- 		"nvim-treesitter/nvim-treesitter",
+--     {
+--         "nvim-neotest/neotest",
+--         dependencies = {
+--             "nvim-neotest/nvim-nio",
+--             "nvim-lua/plenary.nvim",
+--             "antoinemadec/FixCursorHold.nvim",
+--             "nvim-treesitter/nvim-treesitter",
+--             "Issafalcon/neotest-dotnet",
+--         },
+--         config = function()
+--             local neotest = require("neotest")
 --
--- 		-- Language-specific adapters
--- 		-- Adapter for dotnet
--- 		"Issafalcon/neotest-dotnet",
--- 	},
--- 	config = function()
--- 		require("neotest").setup({
--- 			discovery = {
--- 				enabled = false,
--- 			},
--- 			-- log_level = vim.log.levels.DEBUG,
--- 			adapters = {
--- 				require("neotest-dotnet"),
--- 			},
--- 		})
+--             neotest.setup({
+--                 adapters = {
+--                     require("neotest-dotnet")({
+--                         -- Optional: Pfad zur dotnet CLI falls nicht im PATH
+--                         -- dotnet_cmd = "/usr/local/share/dotnet/dotnet",
+--                     }),
+--                 },
+--                 -- Optional: Einstellungen fürs UI
+--                 discovery = { enabled = true },
+--                 output = { open_on_run = true },
+--                 quickfix = { enabled = false },
+--             })
 --
--- 		vim.keymap.set("n", "<leader>tf", function()
--- 			require("neotest").run.run(vim.fn.expand("%"))
--- 		end, { desc = "Run file tests" })
--- 	end,
+--             -- Keymaps
+--             vim.keymap.set("n", "<leader>tr", function()
+--                 neotest.run.run()
+--             end, { desc = "Run nearest test" })
+--
+--             vim.keymap.set("n", "<leader>tf", function()
+--                 neotest.run.run(vim.fn.expand("%"))
+--             end, { desc = "Run all tests in file" })
+--
+--             -- vim.keymap.set("n", "<leader>td", function()
+--             --     neotest.run.run({ strategy = "dap" })
+--             -- end, { desc = "Debug nearest test" })
+--
+--             vim.keymap.set("n", "<leader>ts", function()
+--                 neotest.summary.toggle()
+--             end, { desc = "Toggle test summary" })
+--
+--             vim.keymap.set("n", "<leader>to", function()
+--                 neotest.output_panel.toggle()
+--             end, { desc = "Toggle output panel" })
+--         end,
+--     },
 -- }
