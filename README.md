@@ -1,5 +1,78 @@
+## Important LSPs
 
-Commands
+### Python
+
+◍ autoflake
+◍ black
+◍ isort
+◍ python-lsp-server pylsp
+
+### Angular
+
+◍ angular-language-server angularls
+
+### Github Actions Workflow
+
+◍ actionlint
+
+### C++
+
+◍ clangd
+
+### CSS
+
+◍ css-lsp cssls
+
+### Django
+
+◍ django-template-lsp
+
+### TS and JS
+
+◍ eslint_d
+◍ typescript-language-server ts_ls
+
+### Go
+
+◍ gofumpt
+◍ gopls
+
+### Java
+
+◍ google-java-format
+◍ java-language-server java_language_server
+◍ jdtls
+
+### Html
+
+◍ html-lsp html
+
+### XML
+
+◍ lemminx
+
+### Lua
+
+◍ lua-language-server lua_ls
+◍ stylua
+
+### General Formatter
+
+◍ prettier
+
+### C#/.NET
+
+◍ roslyn
+
+### Rust
+
+◍ rust-analyzer rust_analyze
+
+### Zig
+
+◍ zls
+
+## Commands
 - :w - write
 - :q - quite
 - :Lazy - Lazy Menu

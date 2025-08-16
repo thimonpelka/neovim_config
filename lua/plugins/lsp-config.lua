@@ -39,7 +39,7 @@ return {
                 "java_language_server",
                 "jdtls",
                 "lua_ls",
-                "roslyn",
+                -- "roslyn", -- install by hand
                 -- "mypy",
                 "pylsp",
                 "ts_ls",
