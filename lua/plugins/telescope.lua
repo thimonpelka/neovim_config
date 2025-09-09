@@ -55,18 +55,18 @@ return {
 
 			local builtin = require("telescope.builtin")
 
-			vim.keymap.set("n", "<leader>o", builtin.find_files, {
-				desc = "Open File",
-				silent = true,
-			})
-			vim.keymap.set("n", "<leader>f", builtin.live_grep, {
-				desc = "Fuzzy Find",
-				silent = true,
-			})
-			vim.keymap.set("n", "<leader><leader>", builtin.oldfiles, {
-				desc = "Search File History",
-				silent = true,
-			})
+			-- vim.keymap.set("n", "<leader>o", builtin.find_files, {
+			-- 	desc = "Open File",
+			-- 	silent = true,
+			-- })
+			-- vim.keymap.set("n", "<leader>f", builtin.live_grep, {
+			-- 	desc = "Fuzzy Find",
+			-- 	silent = true,
+			-- })
+			-- vim.keymap.set("n", "<leader><leader>", builtin.oldfiles, {
+			-- 	desc = "Search File History",
+			-- 	silent = true,
+			-- })
 			-- vim.keymap.set("n", "<leader><leader>", , {
 			-- 	desc = "Search File History",
 			-- 	silent = true,
