@@ -1,3 +1,7 @@
+## Attention
+
+**If there are problems with the treesitter install of parsers you might have to manually change/set the environment variable "CC" to "zig" or "clang"**
+
 ## Important LSPs
 
 ### Python
@@ -152,3 +156,8 @@ Git:
 - space + g + p - git push
 
 After "go to definition" use Ctrl+t to go back to where you called it
+
+
+### .NET Dev
+
+Roslyn is installed but you have to also install the roslyn lsp on Mason otherwise it will not work

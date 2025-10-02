@@ -7,7 +7,13 @@ return {
 		-- dependencies = { "nvim-mini/mini.icons" },
 		opts = {},
 		config = function()
-			require("fzf-lua").setup({})
+			require("fzf-lua").setup({
+                previewers = {
+                    builtin = {
+                        syntax_limit_b = 1024 * 100, -- 100KB
+                    }
+                }
+            })
 			local actions = require("fzf-lua").actions
 
 			actions = {

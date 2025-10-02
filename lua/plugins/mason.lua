@@ -4,6 +4,10 @@ vim.lsp.config("*", {
     capabilities = vim.lsp.protocol.make_client_capabilities(),
 })
 
+vim.keymap.set('n', "<leader>m", ":Mason<CR>", {
+    desc = "Open Mason"
+})
+
 -- Diangostics keybinds
 vim.keymap.set("n", "-e", vim.diagnostic.goto_next, {
     desc = "Go to next Diagnostics",
@@ -11,6 +15,22 @@ vim.keymap.set("n", "-e", vim.diagnostic.goto_next, {
 
 vim.keymap.set("n", "-E", vim.diagnostic.goto_prev, {
     desc = "Go to prev Diagnostics",
+})
+
+vim.keymap.set("n", "<leader>sk", vim.lsp.buf.hover, {
+    desc = "Show Description",
+})
+vim.keymap.set("n", "<leader>sd", vim.lsp.buf.definition, {
+    desc = "Show Definition",
+})
+vim.keymap.set("n", "<leader>sr", vim.lsp.buf.references, {
+    desc = "Show Reference",
+})
+-- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {
+-- 	desc = "Show code action",
+-- })
+vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, {
+    desc = "Rename Variable Globally",
 })
 
 return {
@@ -53,14 +73,14 @@ return {
                 "cssls",
                 -- "eslint_d",
                 -- "google-java-format",
-                "gopls",
+                -- "gopls",
                 "html",
-                "java_language_server",
+                -- "java_language_server",
                 "jdtls",
                 "lua_ls",
                 -- "roslyn", -- install by hand
                 -- "mypy",
-                "pylsp",
+                -- "pylsp",
                 "ts_ls",
             },
             auto_install = true,

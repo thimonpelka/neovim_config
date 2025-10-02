@@ -11,10 +11,10 @@ vim.keymap.set("v", "<Tab>", ">gv", { noremap = true, silent = true })
 local trigger_text = ";"
 
 return {
-	{
-		"github/copilot.vim",
-		event = "InsertEnter",
-	},
+	-- {
+	-- 	"github/copilot.vim",
+	-- 	event = "InsertEnter",
+	-- },
 	{
 		"saghen/blink.cmp",
 		-- optional: provides snippets for the snippet source

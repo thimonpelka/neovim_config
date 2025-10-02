@@ -9,10 +9,10 @@ return {
 			{ "<leader>c", group = "Code Actions" },
 			{ "<leader>s", group = "Show" },
 			-- { "<leader>g", group = "Git" },
-			{ "<leader>t", group = "Terminal" },
+			{ "<leader>t", group = "Test" },
 			{ "<leader>k", group = "TODOs" },
 			{ "<leader>q", group = "QuickFix"},
-			{ "<leader>h", group = "Harpoon"},
+			{ "<leader>n", group = "Neogen"},
 		})
 	end,
 }

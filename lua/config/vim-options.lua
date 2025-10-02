@@ -24,40 +24,39 @@ vim.keymap.set({ "v", "n", "i" }, "<C-s>", "<Esc>:wa<CR>", {})
 vim.keymap.set({ "v", "n", "i" }, "<C-a>", "<Esc>:wqa<CR>", {})
 -- vim.keymap.set({ "v", "n", "i" }, "<C-d>", "<Esc>Vyp", {})
 vim.keymap.set({ "n" }, "<leader>d", "<Esc>Vyp", {
-	desc = "Duplicate Line"
+    desc = "Duplicate Line"
 })
 
 vim.keymap.set('n', "<leader>l", ":Lazy<CR>", {
-	desc = "Open Lazy"
+    desc = "Open Lazy"
 })
 
 vim.keymap.set('n', "<leader>cd", ":cd %:p:h<CR>", {
-	desc = "Change working directory to current File"
+    desc = "Change working directory to current File"
 })
 
 vim.keymap.set("n", "<leader>qn", ":cnext<CR>", {
-	desc = "Next item on quickfix list"
+    desc = "Next item on quickfix list"
 })
 
 vim.keymap.set("n", "<leader>qp", ":cprev<CR>", {
-	desc = "Next item on quickfix list"
+    desc = "Next item on quickfix list"
 })
 
 vim.keymap.set("n", "<leader>qo", ":copen<CR>", {
-	desc = "Open quickfix list"
+    desc = "Open quickfix list"
 })
 
 vim.keymap.set("n", "K", "5k", {
-	desc = "Move 5 lines up"
+    desc = "Move 5 lines up"
 })
 
 vim.keymap.set("n", "J", "5j", {
-	desc = "Move 5 lines down"
+    desc = "Move 5 lines down"
 })
 
-
 vim.keymap.set("n", "<leader>C", ":e $MYVIMRC<CR>", {
-	desc = "Open NVIM Config"
+    desc = "Open NVIM Config"
 })
 -- quickfix menu navigation:
 -- vim.keymap.set("n", "<leader>lj", ":cnext<CR>", { desc="Forward qfixlist"})
